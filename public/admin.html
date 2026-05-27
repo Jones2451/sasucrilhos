@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SASUCRILHOS - Painel Admin</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-container">
+            <div class="login-header">
+                <h1>SASUCRILHOS</h1>
+                <p>Painel Administrativo</p>
+            </div>
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="password">Senha de Acesso</label>
+                    <input type="password" id="password" name="password" placeholder="Digite a senha" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Entrar</button>
+            </form>
+            <p id="login-error" class="error-message"></p>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="admin-dashboard" class="admin-dashboard" style="display: none;">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>SASUCRILHOS</h2>
+                <span class="sidebar-subtitle">Admin Panel</span>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-btn active" data-tab="dashboard">
+                    <span class="nav-icon"><i class="fas fa-chart-line"></i></span>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-btn" data-tab="dubladores">
+                    <span class="nav-icon"><i class="fas fa-microphone"></i></span>
+                    <span>Membros</span>
+                </button>
+                <button class="nav-btn" data-tab="episodios">
+                    <span class="nav-icon"><i class="fas fa-film"></i></span>
+                    <span>Episódios</span>
+                </button>
+                <button class="nav-btn" data-tab="contatos">
+                    <span class="nav-icon"><i class="fas fa-envelope"></i></span>
+                    <span>Contatos</span>
+                </button>
+                <button id="logout-btn" class="nav-btn btn-logout">
+                    <span class="nav-icon"><i class="fas fa-sign-out-alt"></i></span>
+                    <span>Sair</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <!-- Header -->
+                <header class="content-header">
+                    <h1 id="page-title">Dashboard</h1>
+                    <div class="header-actions">
+                        <a href="/" target="_blank" class="btn btn-outline">Ver Site</a>
+                    </div>
+                </header>
+
+                <!-- Dashboard Tab -->
+                <div id="tab-dashboard" class="tab-content active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-microphone"></i></div>
+                            <div class="stat-info">
+                                <h3 id="stat-dubladores">0</h3>
+                                <p>Membros</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-film"></i></div>
+                            <div class="stat-info">
+                                <h3 id="stat-episodios">0</h3>
+                                <p>Episódios</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="stat-info">
+                                <h3 id="stat-contatos">0</h3>
+                                <p>Contatos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dubladores Tab -->
+                <div id="tab-dubladores" class="tab-content">
+                    <div class="content-header">
+                        <h2>Gerenciar Equipe</h2>
+                        <button id="add-dublador-btn" class="btn btn-primary">+ Adicionar Membro</button>
+                    </div>
+                    <div id="dubladores-list" class="items-list"></div>
+                </div>
+
+                <!-- Episódios Tab -->
+                <div id="tab-episodios" class="tab-content">
+                    <div class="content-header">
+                        <h2>Gerenciar Episódios</h2>
+                        <button id="add-episodio-btn" class="btn btn-primary">+ Adicionar Episódio</button>
+                    </div>
+                    <div id="episodios-list" class="items-list"></div>
+                </div>
+
+                <!-- Contatos Tab -->
+                <div id="tab-contatos" class="tab-content">
+                <div class="content-header">
+                    <h2>Mensagens Recebidas</h2>
+                </div>
+                <div id="contatos-list" class="items-list"></div>
+            </div>
+
+                <!-- Redes Sociais Tab -->
+                <div id="tab-redes-sociais" class="tab-content">
+                    <div class="content-header">
+                        <h2>Gerenciar Redes Sociais</h2>
+                        <button id="add-rede-btn" class="btn btn-primary">+ Adicionar Rede</button>
+                    </div>
+                    <div id="redes-sociais-list" class="items-list"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Editar Item</h2>
+                <button id="modal-close" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Image Preview Modal -->
+    <div id="image-preview-modal" class="modal">
+        <div class="modal-content modal-image-preview">
+            <div class="modal-header">
+                <h2>Pré-visualização da Imagem</h2>
+                <button id="image-preview-close" class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img id="preview-image" src="" alt="Preview">
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/admin.js"></script>
+</body>
+</html>
