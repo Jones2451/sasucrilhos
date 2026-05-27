@@ -68,17 +68,6 @@ sasucrilhos/
    - O banco de dados SQLite será criado automaticamente na primeira execução
    - O diretório `public/uploads` será criado para armazenar imagens
 
-4. **Acesse o site**
-   ```
-   http://localhost:3000
-   ```
-
-5. **Acesse o painel administrativo (opcional)**
-   ```
-   http://localhost:3000/admin.html
-   ```
-   - **Senha padrão**: `sasucrilhos2025`
-
 ## 📡 API Routes
 
 ### GET /api/dubladores
@@ -308,10 +297,10 @@ Este projeto foi criado para o estúdio de dublagem SASUCRILHOS.
 
 ## 👥 Equipe
 
-- **Desenvolvimento**: Full-stack Developer
-- **Design**: UI/UX Designer
+- **Desenvolvimento**: Skyzoe (Developer Full-Stack)
+- **Design**: Skyzoe (Developer Full-Stack)
 - **Conteúdo**: Equipe SASUCRILHOS
 
 ---
 
-**SASUCRILHOS - Transformando animes em experiências épicas desde 2021.** 🎬✨
+**SASUCRILHOS - Transformando animes em experiências épicas desde 2026.** 🎬✨
