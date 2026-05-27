@@ -1,8 +1,0 @@
-[build]
-  command = "npm install"
-  start = "node server.js"
- 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
